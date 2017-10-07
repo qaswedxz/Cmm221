@@ -1,36 +1,15 @@
-<!DOCTYPE html>
-<html lang="en"> <!--ำหนดว่าใช้ภาษาอังกิดในเว็บ-->
-		<head>
-			<meta charset="utf-8"> <!--กำหนดว่าเว็บเราใช้ฟอนต์ utf-8-->
-				<title>Cmm 19</title>
-					<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-					<link rel="stylesheet" type="text/css" href="assets/home.css"></link>
-		</head>
-			<body>
-				<header>
-					<div class="has-text-centered"> <!-- เอาไว้ใชเวลาคิดไรไท่ออกก็ใส่ลงไป, ใส่ไรก้ได้> <!- -hasdiv เอาไว้ใช้แสดงผล -->
-						<img src="/assets/images/logo.png" width ="145" height= "auto"> 
-					</div>
-
-					   	<nav class="navbar-tabs">
-					   		<div class="nav-center">
-							<a href="#" class="navbar-item">WORK</a>  <!-- class ใช้เพื่อจัดหมวดหมู่ตอนใช้ css selecter-->
-							<a href="#" class="navbar-item">WORK</a>
-							<a href="#" class="navbar-item">WORK</a>
-							<a href="#" class="navbar-item">WORK</a>
-							<a href="#" class="navbar-item">WORK</a>
-							<a href="#" class="navbar-item">WORK</a>
-							<a href="#" class="navbar-item">WORK</a>
-							<a href="#" class="navbar-item">WORK</a>
-							</div>
-			   			</nav>
-				</header>
+			{% extends 'layout/base.twig' %}
+			{% block stylesheet %}
+			<link rel="stylesheet" href="/assets/home.css">
+				{% endblock %}
+			{% block content %}
+				
 				<main>
 					<section class="banner">
 						<div class="highlight">
 							<div class="columns">
-								<div class="column highlight-item"> 
-									<h1>โค้ดดิ้งหัวครุย</h1>
+								<div class="column highlight-item" style="background-image: url({{ highlight.url }});"> 
+									<h1>{{ highlight.title }}</h1>
 									</div>
 								</div>
 							</div>
@@ -38,14 +17,10 @@
 
 						<div class="thumbnail">
 							<div class="columns is-marginless">
-								<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-1.jpg");"> ครุยๆ
+							{% for item in thumbnail %}
+								<div class="column thumbnail-item is-paddingless" style="background-image: url({{item.url}});"> {{ item.title}} 
 								</div>
-								<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-2.jpg");"> ครุยๆ
-								</div>
-								<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-3.jpg");"> ครุยๆ
-								</div>
-								<div class="column thumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-4.jpg");"> ครุยๆ 
-								</div>
+								{% endfor %}
 							</div>
 						</div>
 					</section>
@@ -171,5 +146,4 @@
 						</div>
 					</section>
 				</main>
-			</body>
-</html>
+				{% endblock %}
